@@ -1,10 +1,13 @@
 package client;
 
-import model.GameEngineCallbackImpl;
+import javax.swing.SwingUtilities;
+
 import model.GameEngineImpl;
 import model.SimplePlayer;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
+import view.GameEngineCallbackGUI;
+import view.GameEngineCallbackImpl;
 
 /**
  * Simple console client for SADI assignment 1, 2018
@@ -20,6 +23,7 @@ public class SimpleTestClient
 {
 	public static void main(String args[])
 	{
+		/*
 		// instantiate the GameEngine so we can make calls
 		final GameEngine gameEngine = new GameEngineImpl();
 
@@ -42,5 +46,16 @@ public class SimpleTestClient
 		// all players have rolled so now house rolls (GameEngineCallBack is
 		// called) and results are calculated
 		gameEngine.rollHouse(1, 100, 20);
+		*/
+		
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				new GameEngineCallbackGUI();
+				
+			}
+		});
+		
 	}
 }

@@ -1,4 +1,4 @@
-package model;
+package view;
 
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
