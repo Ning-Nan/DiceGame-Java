@@ -2,18 +2,54 @@ package view;
 
 
 
+import java.awt.FlowLayout;
+import java.util.Collection;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JToolBar;
+
+import controller.AddPlayerListener;
+import model.interfaces.GameEngine;
+import model.interfaces.Player;
 
 public class ToolBar extends JToolBar {
 
-	public ToolBar(){
-		JComboBox<Object> fuck = new JComboBox<>();
-		JButton addPlayer = new JButton("Add Player");	
-		JButton placeBet = new JButton("Place Bet");
+	private JButton addPlayer = new JButton("Add Player");	
+	private JButton placeBet = new JButton("Place Bet");
+	private JButton playerRoll = new JButton("Player Roll");
+	private JButton houseRoll = new JButton("House Roll");
+	
+	private JComboBox<String> selectPlayer = new JComboBox<>();
+	private JLabel select = new JLabel("Select Player: ");
+	
+	public ToolBar(GameEngine gameEngine, MainFrame ui){
+		
+		selectPlayer.addItem("No players yet");
+		add(select);
+		add(selectPlayer);
 		add(addPlayer);
 		add(placeBet);
+		add(playerRoll);
+		add(houseRoll);
+		setLayout(new FlowLayout(FlowLayout.CENTER));
 		
+		AddPlayerListener addPlayerListener  = new AddPlayerListener(gameEngine,ui);
+		addPlayer.addActionListener(addPlayerListener);
+	}
+	
+	
+	public void updateList(GameEngine gameEngine)
+	{
+		//selectPlayer.removeActionListener(l);
+		selectPlayer.removeAllItems();
+		Collection<Player> players = gameEngine.getAllPlayers();
+		for (Player player: players)
+		{
+			selectPlayer.addItem(player.getPlayerName());
+		}
+		
+		//selectPlayer.addActionListener(l);
 	}
 }

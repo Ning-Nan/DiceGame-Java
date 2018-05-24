@@ -6,8 +6,8 @@ import model.GameEngineImpl;
 import model.SimplePlayer;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
-import view.GameEngineCallbackGUI;
 import view.GameEngineCallbackImpl;
+import view.MainFrame;
 
 /**
  * Simple console client for SADI assignment 1, 2018
@@ -52,7 +52,7 @@ public class SimpleTestClient
 			
 			@Override
 			public void run() {
-				new GameEngineCallbackGUI();
+				new MainFrame();
 				
 			}
 		});
