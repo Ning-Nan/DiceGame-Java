@@ -19,6 +19,10 @@ public class MainFrame extends JFrame{
 	private StatusBar statusBar = new StatusBar();
 	private InfoPanel infoPanel = new InfoPanel();
 	
+	// Need Test: Player cannot place bet after rolled and before this round end
+	// Need Test: Player cannot roll until place bet
+	// Need Test: Player can only roll once in every round
+	// Need Test: House can only roll after player rolls
 	public MainFrame()
 	{
 	

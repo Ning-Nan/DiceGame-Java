@@ -43,6 +43,12 @@ public class AddPlayerListener implements ActionListener{
 		}
 		
 		String str = JOptionPane.showInputDialog(ui,"Enter your points: ");
+		
+		if (str == null)
+		{
+			return;
+		}
+		
 		int points = 0;
 		
 		try {
