@@ -33,7 +33,7 @@ public class PlaceBetListener implements ActionListener{
 		}
 		
 		// cannot place bet after roll
-		if (player.getRollResult() != null)
+		if (ui.playerRolled(player) == true)
 		{
 			JOptionPane.showMessageDialog(ui, "This player has already rolled!! Cannot place bet until this round end!");
 			return;

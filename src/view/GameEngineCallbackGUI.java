@@ -72,10 +72,10 @@ public class GameEngineCallbackGUI implements GameEngineCallback {
 			
 			message = message + player.toString() + ", Result Sum: " + playerSum +  "<br>"; 
 			
-			player.setRollResult(null);
+			
 		}
 		
-		final String resultMessage = message + "<br>Note: This round is end and the player dice result is reset!" + "</html>";
+		final String resultMessage = message + "<br>" + "</html>";
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -83,6 +83,7 @@ public class GameEngineCallbackGUI implements GameEngineCallback {
 				
 				ui.updatePanel(resultMessage);
 				ui.updateStatus(ui.getSelectPlayer());
+				ui.emptyRolledPlayer();
 			}
 		});
 	}

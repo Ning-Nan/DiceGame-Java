@@ -39,11 +39,13 @@ public class PlayerRollListener implements ActionListener{
 		}
 		
 		//cannot roll twice
-		if (player.getRollResult() != null)
+		if (ui.playerRolled(player) == true)
 		{
 			JOptionPane.showMessageDialog(ui, "This Player has already rolled this round!");
 			return;
 		}
+		
+		ui.addToRolledPlayer(player);
 		
 		new Thread() {
 			@Override

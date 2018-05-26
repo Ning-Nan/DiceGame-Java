@@ -1,16 +1,14 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
+import java.util.Collection;
 
-import javax.activation.UnsupportedDataTypeException;
 import javax.swing.JFrame;
-import javax.swing.JToolBar;
 
-import javafx.scene.layout.Border;
 import model.GameEngineImpl;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
-import sun.reflect.generics.tree.VoidDescriptor;
 
 public class MainFrame extends JFrame{
 
@@ -22,6 +20,7 @@ public class MainFrame extends JFrame{
 	private GameEngineCallbackImpl gameEngineCallbackImpl = new GameEngineCallbackImpl();
 	private GameEngineCallbackGUI gameEngineCallbackGUI = new GameEngineCallbackGUI(this);
 	
+	private Collection<Player> rolledPlayers = new ArrayList<Player>();
 	
 	// Need Test: Player cannot place bet after rolled and before this round end
 	// Need Test: Player cannot roll until place bet
@@ -70,5 +69,27 @@ public class MainFrame extends JFrame{
 	public void updatePanel(String message)
 	{
 		infoPanel.updatePanel(message);
+	}
+	
+	public boolean playerRolled(Player player){
+		
+		if (rolledPlayers.contains(player))
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+	
+	public void addToRolledPlayer(Player player)
+	{
+		rolledPlayers.add(player);
+	}
+	
+	public void emptyRolledPlayer()
+	{
+		rolledPlayers.removeAll(rolledPlayers);
 	}
 }
