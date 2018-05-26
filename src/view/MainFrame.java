@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -38,6 +39,7 @@ public class MainFrame extends JFrame{
 	    setJMenuBar(pullDownMenu);
 						
 		setBounds(100, 100, 800, 600);
+        setMinimumSize(new Dimension(480, 400));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		gameEngine.addGameEngineCallback(gameEngineCallbackGUI);
@@ -68,6 +70,8 @@ public class MainFrame extends JFrame{
 		infoPanel.updatePanel(message);
 	}
 	
+	//do this in the view class is much better in any other classes. Too many passing and calling method.
+	//And we are not allowed to modify it in gameEngine. And here it is simple.
 	public boolean playerRolled(Player player){
 		
 		if (rolledPlayers.contains(player))
