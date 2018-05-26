@@ -33,7 +33,7 @@ public class HouseRollListener implements ActionListener{
 		
 		for (Player player: players)
 		{
-			if (player.getRollResult() == null)
+			if (ui.playerRolled(player) == false)
 			{
 				JOptionPane.showMessageDialog(ui, "House can only roll after all players have rolled!");
 				return;

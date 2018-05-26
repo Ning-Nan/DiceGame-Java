@@ -16,17 +16,14 @@ public class MainFrame extends JFrame{
 	private ToolBar toolBar = new ToolBar(this.gameEngine,this);
 	private StatusBar statusBar = new StatusBar();
 	private InfoPanel infoPanel = new InfoPanel();
+	private PullDownMenu pullDownMenu = new PullDownMenu(gameEngine, this);
 	
 	private GameEngineCallbackImpl gameEngineCallbackImpl = new GameEngineCallbackImpl();
 	private GameEngineCallbackGUI gameEngineCallbackGUI = new GameEngineCallbackGUI(this);
 	
 	private Collection<Player> rolledPlayers = new ArrayList<Player>();
 	
-	// Need Test: Player cannot place bet after rolled and before this round end
-	// Need Test: Player cannot roll until place bet
-	// Need Test: Player can only roll once in every round
-	// Need Test: House can only roll after player rolls
-	// Problem: Same Name not working
+
 	public MainFrame()
 	{
 	
@@ -38,7 +35,7 @@ public class MainFrame extends JFrame{
 	    add(toolBar, BorderLayout.NORTH);
 	    add(statusBar, BorderLayout.SOUTH);
 	    add(infoPanel, BorderLayout.CENTER);
-	   
+	    setJMenuBar(pullDownMenu);
 						
 		setBounds(100, 100, 800, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
