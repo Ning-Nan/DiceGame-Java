@@ -10,11 +10,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+import model.interfaces.Player;
+
 public class StatusBar extends JPanel{
 
-	private JLabel statusLabel1 = new JLabel("Not Implemented", JLabel.LEFT);
-	private JLabel statusLabel2 = new JLabel("Not Implemented", JLabel.CENTER);
-	private JLabel statusLabel3 = new JLabel("Not Implemented", JLabel.RIGHT);
+	private JLabel statusLabel1 = new JLabel("No Data", JLabel.LEFT);
+	private JLabel statusLabel2 = new JLabel("No Data", JLabel.CENTER);
+	private JLabel statusLabel3 = new JLabel("No Data", JLabel.RIGHT);
 
 	public StatusBar()
 	{
@@ -34,5 +36,12 @@ public class StatusBar extends JPanel{
 		add(statusLabel2);
 		add(statusLabel3);
 		
+	}
+	
+	public void updateStatus(Player player)
+	{
+		statusLabel1.setText(String.format("ID: %s Name: %s", player.getPlayerId(), player.getPlayerName()));
+		statusLabel2.setText(String.format("Points: %d", player.getPoints()));
+		statusLabel3.setText(String.format("Bet: %d", player.getBet()));
 	}
 }

@@ -2,12 +2,15 @@ package view;
 
 import java.awt.BorderLayout;
 
+import javax.activation.UnsupportedDataTypeException;
 import javax.swing.JFrame;
 import javax.swing.JToolBar;
 
 import javafx.scene.layout.Border;
 import model.GameEngineImpl;
 import model.interfaces.GameEngine;
+import model.interfaces.Player;
+import sun.reflect.generics.tree.VoidDescriptor;
 
 public class MainFrame extends JFrame{
 
@@ -39,4 +42,16 @@ public class MainFrame extends JFrame{
 	{
 		toolBar.updateList(gameEngine);
 	}
+	
+	public Player getSelectPlayer()
+	{
+		Player player = gameEngine.getPlayer(toolBar.getSelectedPlayer());
+		return player;
+	}
+	
+	public void updateStatus(Player player)
+	{
+		statusBar.updateStatus(player);
+	}
+	
 }

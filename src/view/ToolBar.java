@@ -3,6 +3,7 @@ package view;
 
 
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.util.Collection;
 
 import javax.swing.JButton;
@@ -11,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JToolBar;
 
 import controller.AddPlayerListener;
+import controller.SelectListListener;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
 
@@ -37,6 +39,9 @@ public class ToolBar extends JToolBar {
 		
 		AddPlayerListener addPlayerListener  = new AddPlayerListener(gameEngine,ui);
 		addPlayer.addActionListener(addPlayerListener);
+		
+		SelectListListener selectListListener = new SelectListListener(ui);
+		selectPlayer.addActionListener(selectListListener);
 	}
 	
 	
@@ -52,4 +57,10 @@ public class ToolBar extends JToolBar {
 		
 		//selectPlayer.addActionListener(l);
 	}
+	
+	public String getSelectedPlayer()
+	{	
+		return (selectPlayer.getSelectedIndex() +1 )+ "";
+	}
+	
 }
