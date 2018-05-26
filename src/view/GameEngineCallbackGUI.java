@@ -18,41 +18,33 @@ public class GameEngineCallbackGUI implements GameEngineCallback {
 	@Override
 	public void intermediateResult(Player player, DicePair dicePair, GameEngine gameEngine) {
 		
-		final String message = getMessage(player, dicePair, "ROLLING");
+		String message = getMessage(player, dicePair, "ROLLING");
 		
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				
-				ui.updatePanel(message);
-			}
-		});
+		roll(message);
 		
 
 	}
 
 	@Override
 	public void result(Player player, DicePair result, GameEngine gameEngine) {
-		final String message = getMessage(player, result, "*RESULT*");
+		String message = getMessage(player, result, "*RESULT*");
 		
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				
-				ui.updatePanel(message);
-			}
-		});
+		roll(message);
 	}
 
 	@Override
 	public void intermediateHouseResult(DicePair dicePair, GameEngine gameEngine) {
-		// TODO Auto-generated method stub
-
+		String message = getMessage(null, dicePair, "ROLLING");
+		
+		roll(message);
 	}
 
 	@Override
 	public void houseResult(DicePair result, GameEngine gameEngine) {
-		// TODO Auto-generated method stub
+		String message = getMessage(null, result, "*RESULT*");
+		
+		
+		roll(message);
 
 	}
 
@@ -60,16 +52,33 @@ public class GameEngineCallbackGUI implements GameEngineCallback {
 		// house player
 		if (player == null) {
 
-			return String.format("House: %s %s Total: %d", action, dicePair, dicePair.getDice1() + dicePair.getDice2());
+			return String.format("House: %s %s Total: %d", action,
+					dicePair, 
+					dicePair.getDice1() + dicePair.getDice2());
 		}
 
 		// player
 		else {
 
-			return String.format("%s: %s %s Total: %d", player.getPlayerName(), action, dicePair,
+			return String.format("%s: %s %s Total: %d", player.getPlayerName(), 
+					action, 
+					dicePair,
 					dicePair.getDice1() + dicePair.getDice2());
 
 		}
+	}
+	
+	private void roll(String str){
+		
+		final String message = str;
+		
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				
+				ui.updatePanel(message);
+			}
+		});
 	}
 
 }

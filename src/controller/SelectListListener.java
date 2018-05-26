@@ -30,7 +30,8 @@ public class SelectListListener implements ActionListener{
 		}
 		
 		ui.updateStatus(player);
-
+		
+		/*
 		if (player.getRollResult() == null)
 		{
 			String message = "Not Rolled Yet!";
@@ -44,6 +45,7 @@ public class SelectListListener implements ActionListener{
 			
 			ui.updatePanel(message);
 		}
+		*/
 	}
 
 }

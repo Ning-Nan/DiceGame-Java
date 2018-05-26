@@ -27,6 +27,7 @@ public class PlayerRollListener implements ActionListener{
 		
 		if (player == null)
 		{
+			JOptionPane.showMessageDialog(ui, "No Players!");
 			return;
 		}
 		

@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JToolBar;
 
 import controller.AddPlayerListener;
+import controller.HouseRollListener;
 import controller.PlaceBetListener;
 import controller.PlayerRollListener;
 import controller.SelectListListener;
@@ -45,11 +46,14 @@ public class ToolBar extends JToolBar {
 		SelectListListener selectListListener = new SelectListListener(ui);
 		selectPlayer.addActionListener(selectListListener);
 		
-		PlaceBetListener placeBetListener = new PlaceBetListener(gameEngine, ui);
+		PlaceBetListener placeBetListener = new PlaceBetListener(ui);
 		placeBet.addActionListener(placeBetListener);
 		
 		PlayerRollListener playerRollListener = new PlayerRollListener(gameEngine, ui);
 		playerRoll.addActionListener(playerRollListener);
+		
+		HouseRollListener houseRollListener = new HouseRollListener(gameEngine, ui);
+		houseRoll.addActionListener(houseRollListener);
 	}
 	
 	

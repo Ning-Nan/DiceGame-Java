@@ -7,11 +7,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class InfoPanel extends JPanel  {
 	
-	private JLabel diceInfo = new JLabel("No Result yet");
-	
-	
+	private JLabel diceInfo = new JLabel("No Rolling yet");
+	private JLabel label = new JLabel("Rolling Data");
 	public InfoPanel()
 	{
 		setLayout(new BorderLayout());
@@ -19,7 +19,11 @@ public class InfoPanel extends JPanel  {
 		
 		diceInfo.setFont(font);
 		diceInfo.setHorizontalAlignment(SwingConstants.CENTER);
-		add(diceInfo,BorderLayout.CENTER);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		add(diceInfo, BorderLayout.CENTER);
+		add(label, BorderLayout.NORTH);
+		
 		
 		
 	}

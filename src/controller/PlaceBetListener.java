@@ -28,6 +28,7 @@ public class PlaceBetListener implements ActionListener{
 		
 		if (player == null)
 		{
+			JOptionPane.showMessageDialog(ui, "No Players!");
 			return;
 		}
 		
@@ -40,6 +41,11 @@ public class PlaceBetListener implements ActionListener{
 		
 		String str = JOptionPane.showInputDialog(ui,"Enter bets you want to place: ");
 		int bets = 0;
+		
+		if (str == null)
+		{
+			return;
+		}
 		
 		//validation
 		try {
