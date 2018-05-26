@@ -13,6 +13,7 @@ import javax.swing.JToolBar;
 
 import controller.AddPlayerListener;
 import controller.PlaceBetListener;
+import controller.PlayerRollListener;
 import controller.SelectListListener;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
@@ -46,6 +47,9 @@ public class ToolBar extends JToolBar {
 		
 		PlaceBetListener placeBetListener = new PlaceBetListener(gameEngine, ui);
 		placeBet.addActionListener(placeBetListener);
+		
+		PlayerRollListener playerRollListener = new PlayerRollListener(gameEngine, ui);
+		playerRoll.addActionListener(playerRollListener);
 	}
 	
 	
@@ -56,7 +60,7 @@ public class ToolBar extends JToolBar {
 		Collection<Player> players = gameEngine.getAllPlayers();
 		for (Player player: players)
 		{
-			selectPlayer.addItem(player.getPlayerName());
+			selectPlayer.addItem( String.format("%s %s", player.getPlayerId(), player.getPlayerName()));
 		}
 		
 		//selectPlayer.addActionListener(l);

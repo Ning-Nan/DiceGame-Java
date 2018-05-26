@@ -15,11 +15,9 @@ import view.MainFrame;
 
 public class PlaceBetListener implements ActionListener{
 	
-	private GameEngine gameEngine;
 	private MainFrame ui;
 
-	public PlaceBetListener(GameEngine gameEngine, MainFrame ui){
-		this.gameEngine = gameEngine;
+	public PlaceBetListener( MainFrame ui){
 		this.ui = ui;
 	}
 	
@@ -33,6 +31,7 @@ public class PlaceBetListener implements ActionListener{
 			return;
 		}
 		
+		// cannot place bet after roll
 		if (player.getRollResult() != null)
 		{
 			JOptionPane.showMessageDialog(ui, "This player has already rolled!! Cannot place bet until this round end!");
@@ -42,6 +41,7 @@ public class PlaceBetListener implements ActionListener{
 		String str = JOptionPane.showInputDialog(ui,"Enter bets you want to place: ");
 		int bets = 0;
 		
+		//validation
 		try {
 			bets = Integer.parseInt(str);
 			if (bets <= 0)
@@ -59,6 +59,7 @@ public class PlaceBetListener implements ActionListener{
 			return;
 		}
 		
+		//update status bar
 		ui.updateStatus(player);
 		
 		

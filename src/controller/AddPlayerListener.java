@@ -28,6 +28,7 @@ public class AddPlayerListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		//get Name and validation
 		String playerName = JOptionPane.showInputDialog(ui,"Enter Player Name: ");
 		
 		if (playerName == null)
@@ -39,9 +40,10 @@ public class AddPlayerListener implements ActionListener{
 		{
 			JOptionPane.showMessageDialog(ui, "Name Cannot be empty!");
 			return;
-
 		}
 		
+		
+		//get points and validation
 		String str = JOptionPane.showInputDialog(ui,"Enter your points: ");
 		
 		if (str == null)
@@ -62,10 +64,10 @@ public class AddPlayerListener implements ActionListener{
 			return;
 		}
 		
+		
+		//Add to gameEngine,update list, and auto-generate id
 		Collection<Player> players = gameEngine.getAllPlayers();
-		
 		String id = (players.size() + 1) + "";
-		
 		Player player = new SimplePlayer(id, playerName, points);
 		gameEngine.addPlayer(player);
 		ui.updatePlayerList();

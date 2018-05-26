@@ -118,7 +118,7 @@ public class GameEngineImpl implements GameEngine {
 				e.printStackTrace();
 			}
 			
-			DicePair dicePair = new DicePairImpl(randomNumber(), randomNumber(), NUM_FACES);
+			DicePair dicePair = randomDice();
 
 			for (GameEngineCallback callback : callBacks) {
 
@@ -143,7 +143,7 @@ public class GameEngineImpl implements GameEngine {
 			e.printStackTrace();
 		}
 		
-		DicePair dicePair = new DicePairImpl(randomNumber(), randomNumber(), NUM_FACES);
+		DicePair dicePair = randomDice();
 
 		for (GameEngineCallback callback : callBacks) {
 
@@ -163,24 +163,25 @@ public class GameEngineImpl implements GameEngine {
 
 	}
 
-	//give randomNumber
-	private int randomNumber() {
-
+	
+	private DicePair randomDice(){
 		Random random = new Random();
-		return random.nextInt(NUM_FACES) + 1;
-
+		Random random1 = new Random();
+		
+		DicePair dicePair = new DicePairImpl(random.nextInt(NUM_FACES) + 1, random1.nextInt(NUM_FACES) + 1, NUM_FACES);
+		return dicePair;
 	}
 	
 	
 	//update the result in player
 	private void caculateResult(){
 		
-		int houseSum = house.getRollResult().getDice1() + house.getRollResult().getDice2();
+		int houseSum = Sum(house.getRollResult().getDice1(), house.getRollResult().getDice2());
 		
 		for (Player player: players){
 			//update results
 			//reset bet
-			int playerSum = player.getRollResult().getDice1() + player.getRollResult().getDice2();
+			int playerSum = Sum(player.getRollResult().getDice1(), player.getRollResult().getDice2());
 			
 			if (playerSum > houseSum){
 				player.setPoints(player.getPoints() + player.getBet());
@@ -196,6 +197,11 @@ public class GameEngineImpl implements GameEngine {
 		}
 		
 		
+	}
+	
+	private int Sum(int a, int b)
+	{
+		return a + b;
 	}
 
 }

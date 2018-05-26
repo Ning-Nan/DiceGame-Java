@@ -23,4 +23,10 @@ public class InfoPanel extends JPanel  {
 		
 		
 	}
+	
+	public void updatePanel(String message){
+		
+		diceInfo.setText(message);
+		
+	}
 }

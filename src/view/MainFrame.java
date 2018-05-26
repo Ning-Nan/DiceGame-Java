@@ -19,10 +19,15 @@ public class MainFrame extends JFrame{
 	private StatusBar statusBar = new StatusBar();
 	private InfoPanel infoPanel = new InfoPanel();
 	
+	private GameEngineCallbackImpl gameEngineCallbackImpl = new GameEngineCallbackImpl();
+	private GameEngineCallbackGUI gameEngineCallbackGUI = new GameEngineCallbackGUI(this);
+	
+	
 	// Need Test: Player cannot place bet after rolled and before this round end
 	// Need Test: Player cannot roll until place bet
 	// Need Test: Player can only roll once in every round
 	// Need Test: House can only roll after player rolls
+	// Problem: Same Name not working
 	public MainFrame()
 	{
 	
@@ -38,6 +43,10 @@ public class MainFrame extends JFrame{
 						
 		setBounds(100, 100, 800, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		gameEngine.addGameEngineCallback(gameEngineCallbackGUI);
+		gameEngine.addGameEngineCallback(gameEngineCallbackImpl);
+		
 		setVisible(true);
 		
 	}
@@ -58,4 +67,8 @@ public class MainFrame extends JFrame{
 		statusBar.updateStatus(player);
 	}
 	
+	public void updatePanel(String message)
+	{
+		infoPanel.updatePanel(message);
+	}
 }
