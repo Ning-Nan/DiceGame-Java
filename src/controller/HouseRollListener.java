@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import javax.swing.JOptionPane;
 
+import model.PlayerRolled;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
 import view.MainFrame;
@@ -13,11 +14,12 @@ import view.MainFrame;
 public class HouseRollListener implements ActionListener{
 	private GameEngine gameEngine;
 	private MainFrame ui;
-	private Player player;
+	private PlayerRolled playerRolled;
 	
-	public HouseRollListener (GameEngine gameEngine, MainFrame ui){
+	public HouseRollListener (GameEngine gameEngine, MainFrame ui, PlayerRolled playerRolled){
 		this.gameEngine = gameEngine;
 		this.ui = ui;
+		this.playerRolled = playerRolled;
 	}
 
 	@Override
@@ -33,7 +35,7 @@ public class HouseRollListener implements ActionListener{
 		
 		for (Player player: players)
 		{
-			if (ui.playerRolled(player) == false)
+			if (playerRolled.playerRolled(player) == false)
 			{
 				JOptionPane.showMessageDialog(ui, "House can only roll after all players have rolled!");
 				return;

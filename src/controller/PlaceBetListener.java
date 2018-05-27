@@ -7,6 +7,7 @@ import java.util.Collection;
 
 import javax.swing.JOptionPane;
 
+import model.PlayerRolled;
 import model.SimplePlayer;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
@@ -16,9 +17,11 @@ import view.MainFrame;
 public class PlaceBetListener implements ActionListener{
 	
 	private MainFrame ui;
-
-	public PlaceBetListener( MainFrame ui){
+	private PlayerRolled playerRolled;
+	
+	public PlaceBetListener( MainFrame ui, PlayerRolled playerRolled){
 		this.ui = ui;
+		this.playerRolled = playerRolled;
 	}
 	
 	@Override
@@ -33,7 +36,7 @@ public class PlaceBetListener implements ActionListener{
 		}
 		
 		// cannot place bet after roll
-		if (ui.playerRolled(player) == true)
+		if (playerRolled.playerRolled(player) == true)
 		{
 			JOptionPane.showMessageDialog(ui, "This player has already rolled!! Cannot place bet until this round end!");
 			return;

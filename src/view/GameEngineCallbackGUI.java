@@ -1,13 +1,9 @@
 package view;
 
-import java.util.logging.Level;
 
 import javax.swing.SwingUtilities;
 
-import com.sun.security.auth.NTDomainPrincipal;
-import com.sun.xml.internal.ws.policy.EffectiveAlternativeSelector;
-
-import controller.HouseRollListener;
+import model.PlayerRolled;
 import model.interfaces.DicePair;
 import model.interfaces.GameEngine;
 import model.interfaces.GameEngineCallback;
@@ -16,9 +12,11 @@ import model.interfaces.Player;
 public class GameEngineCallbackGUI implements GameEngineCallback {
 
 	private MainFrame ui;
-
-	public GameEngineCallbackGUI(MainFrame ui) {
+	private PlayerRolled playerRolled;
+	
+	public GameEngineCallbackGUI(MainFrame ui, PlayerRolled playerRolled) {
 		this.ui = ui;
+		this.playerRolled = playerRolled;
 	}
 
 	@Override
@@ -83,7 +81,7 @@ public class GameEngineCallbackGUI implements GameEngineCallback {
 				
 				ui.updatePanel(resultMessage);
 				ui.updateStatus(ui.getSelectPlayer());
-				ui.emptyRolledPlayer();
+				playerRolled.emptyRolledPlayer();
 			}
 		});
 	}

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import model.PlayerRolled;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
 import view.MainFrame;
@@ -14,10 +15,12 @@ public class PlayerRollListener implements ActionListener{
 	private GameEngine gameEngine;
 	private MainFrame ui;
 	private Player player;
+	private PlayerRolled playerRolled;
 	
-	public PlayerRollListener(GameEngine gameEngine, MainFrame ui) {
+	public PlayerRollListener(GameEngine gameEngine, MainFrame ui, PlayerRolled playerRolled) {
 		this.gameEngine = gameEngine;
 		this.ui = ui;
+		this.playerRolled = playerRolled;
 	}
 	
 	@Override
@@ -39,13 +42,13 @@ public class PlayerRollListener implements ActionListener{
 		}
 		
 		//cannot roll twice
-		if (ui.playerRolled(player) == true)
+		if (playerRolled.playerRolled(player) == true)
 		{
 			JOptionPane.showMessageDialog(ui, "This Player has already rolled this round!");
 			return;
 		}
 		
-		ui.addToRolledPlayer(player);
+		playerRolled.addToRolledPlayer(player);
 		
 		new Thread() {
 			@Override

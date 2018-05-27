@@ -3,7 +3,6 @@ package view;
 
 
 import java.awt.FlowLayout;
-import java.awt.Graphics;
 import java.util.Collection;
 
 import javax.swing.JButton;
@@ -11,11 +10,11 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JToolBar;
 
-import controller.AddPlayerListener;
 import controller.HouseRollListener;
 import controller.PlaceBetListener;
 import controller.PlayerRollListener;
 import controller.SelectListListener;
+import model.PlayerRolled;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
 
@@ -28,7 +27,7 @@ public class ToolBar extends JToolBar {
 	private JComboBox<String> selectPlayer = new JComboBox<>();
 	private JLabel select = new JLabel("Select Player: ");
 	
-	public ToolBar(GameEngine gameEngine, MainFrame ui){
+	public ToolBar(GameEngine gameEngine, MainFrame ui, PlayerRolled playerRolled){
 		
 		selectPlayer.addItem("No players yet");
 		add(select);
@@ -42,13 +41,13 @@ public class ToolBar extends JToolBar {
 		SelectListListener selectListListener = new SelectListListener(ui);
 		selectPlayer.addActionListener(selectListListener);
 		
-		PlaceBetListener placeBetListener = new PlaceBetListener(ui);
+		PlaceBetListener placeBetListener = new PlaceBetListener(ui, playerRolled);
 		placeBet.addActionListener(placeBetListener);
 		
-		PlayerRollListener playerRollListener = new PlayerRollListener(gameEngine, ui);
+		PlayerRollListener playerRollListener = new PlayerRollListener(gameEngine, ui, playerRolled);
 		playerRoll.addActionListener(playerRollListener);
 		
-		HouseRollListener houseRollListener = new HouseRollListener(gameEngine, ui);
+		HouseRollListener houseRollListener = new HouseRollListener(gameEngine, ui, playerRolled);
 		houseRoll.addActionListener(houseRollListener);
 	}
 	

@@ -30,22 +30,7 @@ public class SelectListListener implements ActionListener{
 		}
 		
 		ui.updateStatus(player);
-		
-		/*
-		if (player.getRollResult() == null)
-		{
-			String message = "Not Rolled Yet!";
-			ui.updatePanel(message);
-		}
-		else
-		{
-			String message = String.format("%s: *RESULT* %s Total: %d", player.getPlayerName(),
-					player.getRollResult(),
-					player.getRollResult().getDice1()+player.getRollResult().getDice2());
-			
-			ui.updatePanel(message);
-		}
-		*/
+
 	}
 
 }
