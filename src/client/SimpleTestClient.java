@@ -2,11 +2,6 @@ package client;
 
 import javax.swing.SwingUtilities;
 
-import model.GameEngineImpl;
-import model.SimplePlayer;
-import model.interfaces.GameEngine;
-import model.interfaces.Player;
-import view.GameEngineCallbackImpl;
 import view.MainFrame;
 
 /**
